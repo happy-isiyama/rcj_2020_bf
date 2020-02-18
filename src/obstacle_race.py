@@ -13,9 +13,9 @@ import sys
 import smach
 import smach_ros
 
-#sys.path.insert(0, '/home/athome/catkin_ws/src/mimi_common_pkg/scripts')
-#from common_action_client import *
-#from common_function import *
+sys.path.insert(0, '/home/athome/catkin_ws/src/mimi_common_pkg/scripts')
+from common_action_client import *
+from common_function import *
 
 class Navigation(smach.State):
     def __init__(self):
@@ -38,7 +38,7 @@ class Navigation(smach.State):
             naviAC(userdata.location_in)
             return 'outcome1'
         
-        elif userdata.location_in != 'cupboard' and userdata.location_in != 'door':
+        elif not userdata.location_in = 'cupboard' and not userdata.location_in = 'door':
             naviAC(userdata.location_in)
             userdata.location_out = 'door'
             return 'outcome3'
