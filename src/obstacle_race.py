@@ -59,7 +59,6 @@ class GrabArm(smach.State):
     def execute(self, userdata):
         userdata.object_name_out = 'cup'
         grab(object_name_out)
-        print 'outcome2'
         return 'outcome2'
 
 
