@@ -27,23 +27,24 @@ class Navigation(smach.State):
 
     def naviAC(self, object_name):
         flag = 'failed'
-        location_list = searchLocationName(object_name)
+      #  location_list = searchLocationName(object_name)
         while not rospy.is_shutdown() and self.flag == 'failed':
-            self.flag = navigationAC(location_list)
-            rospy.sleep(1.0)
+           # self.flag = navigationAC(location_list)
+           self.flag = 'True'
+        rospy.sleep(1.0)
 
 
     def execute(self, userdata):
-        if userdata.location_in == 'cupboard':
+        if userdata.location_in == 'table':
             naviAC(userdata.location_in)
             return 'outcome1'
         
-        elif not userdata.location_in = 'cupboard' and not userdata.location_in = 'door':
+        elif not userdata.location_in == 'table' and not userdata.location_in == 'operator':
             naviAC(userdata.location_in)
-            userdata.location_out = 'door'
+            userdata.location_out = 'operator'
             return 'outcome3'
         
-        elif userdata.location_in == 'door':
+        elif userdata.location_in == 'operator':
             naviAC(userdata.location_in)
             return 'outcome5'
 
@@ -58,7 +59,7 @@ class GrabArm(smach.State):
 
     def execute(self, userdata):
         userdata.object_name_out = 'cup'
-        grab(object_name_out)
+       # grab(object_name_out)
         return 'outcome2'
 
 
@@ -69,8 +70,8 @@ class OpenDoor(smach.State):
                             output_keys=['location_out'])
 
     def execute(self, userdata):
-        enterTheRoomAC()
-        userdata.location_out = 'goal'
+       # enterTheRoomAC()
+        userdata.location_out = 'cupboard'
         print 'outcome4'
         return 'outcome4'
 
